@@ -3,7 +3,18 @@ import numpy as np
 import imutils
 import time
 
+prototxt = "MobileNetSSD_deploy.prototxt"
+model = "MobileNetSSD_deploy.caffemodel"
+cofThresh = 0.2
+
+CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable"]
+
+COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
+
+print("model loading...")
+
 camera = cv2.VideoCapture(0)
+time.sleep(2.0)
 
 while True:
     _, frame = camera.read()
@@ -19,4 +30,3 @@ while True:
 
 camera.release()
 cv2.destroyAllWindows()
-
